@@ -112,7 +112,7 @@ jobs:
 
       - name: Restore exact LLVM build outputs
         id: llvm-build-cache
-        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: .cache/llvm-build
           key: llvm-build-${{ runner.os }}-${{ runner.arch }}-${{ env.LLVM_SOURCE_SHA256 }}-${{ hashFiles('toolchains/llvm.lock.json', 'scripts/ci-build-llvm.sh') }}-${{ steps.llvm-build-fingerprint.outputs.value }}
@@ -263,7 +263,7 @@ jobs:
           } | sha256sum | awk '{print "value=" $1}' >> "${GITHUB_OUTPUT}"
 
       - name: Restore exact LLVM build outputs
-        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: .cache/llvm-build
           key: llvm-build-${{ runner.os }}-${{ runner.arch }}-${{ env.LLVM_SOURCE_SHA256 }}-${{ hashFiles('toolchains/llvm.lock.json', 'scripts/ci-build-llvm.sh') }}-${{ steps.llvm-build-fingerprint.outputs.value }}
